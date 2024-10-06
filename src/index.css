@@ -86,3 +86,125 @@ nav {
     display: none;
   }
 }
+
+@media (max-width: 990px) {
+  .hidden-h1 {
+    font-size: 1.5rem;
+  }
+}
+
+.title-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 12rem;
+}
+
+.title-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 45px;
+  background: #F1468A;
+  width: 47.75rem;
+  height: 5rem;
+}
+
+.title {
+  color: #FFF;
+  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  font-size: 40px;
+  font-weight: 700;
+}
+
+@media (max-width: 990px) {
+  .title-box {
+    height: 7rem;
+  }
+}
+
+@media (max-width: 990px) {
+  .title-container {
+    width: 19rem;
+    height: 3rem;
+  }
+}
+
+@media (max-width: 990px) {
+  .title {
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+}
+
+.table-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.table-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: #FF3485;
+  width: 53.625rem;
+  height: 3.75rem;
+}
+
+@media (max-width: 700px) {
+  .hidden-element {
+    display: none;
+  }
+}
+
+h3 {
+  color: #FFF;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+@media (max-width: 990px) {
+  h3 {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+}
+
+.users-container {
+  padding-top: 3rem;
+  padding-bottom: 10rem;
+}
+
+.button {
+  text-decoration: none;
+  border-radius: 45px;
+  background: #1E1E1E;
+  width: 5.625rem;
+  height: 2.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFF;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+p {
+  color: #FFF;
+  font-size: 0.8rem;
+  font-weight: 500;
+  width: 9.375rem;   /* Set a fixed width for each item (adjust as necessary) */
+}
+
+@media (max-width: 700px) {
+  p {
+    width: 7rem;
+  }
+}
+
+.alternate-card {
+  background: #8D5FC9;
+}
+
+
