@@ -1,7 +1,88 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-h1 {
-  font-family: "Poppins", sans-serif;
-  font-weight: 100;
-  font-style: normal;
+body {
+  font-family: 'Poppins', 'sans-serif';
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+}
+
+nav {
+  display: flex;
+  background-color: #8D5FC9;
+  width: 100%;
+}
+
+.nav-container {
+  width: 100%;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  margin-right: 2.5rem;
+  margin-left: 2.5rem;
+  justify-content: space-between;
+}
+
+.nav-items {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.logo {
+  width: 3.75rem;
+  height: 3.75rem;
+}
+
+.my-name {
+  color: #FFF;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.nav-h1 {
+  color: #FFF;
+  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.nav-links {
+  display: flex;
+  gap: 0.625rem;
+}
+
+.nav-links-items {
+  color: #FFF;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.hidden-h1 {
+  color: #8D5FC9;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .my-name {
+    display: none;
+  }
+}
+
+@media (max-width: 990px) {
+  .nav-h1 {
+    display: none;
+  }
+}
+
+@media (min-width: 990px) {
+  .hidden-h1 {
+    display: none;
+  }
 }
