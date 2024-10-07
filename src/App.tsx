@@ -10,9 +10,13 @@ const App: React.FC = () => {
 
   // Delete Job
   const deleteUser = async (id: string): Promise<void> => {
-      await fetch(`https://jobs-listing-api.onrender.com/api/jobs/${id}`, {
+      const res = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`, {
       method: 'DELETE',
     });
+
+    if(res.ok) {
+      window.alert("User was deleted on the jsonplaceholder api.")
+    }
 
     return;
   };
