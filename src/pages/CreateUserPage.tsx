@@ -1,16 +1,78 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 
-const CreateUserPage = () => {
+type CreateUserPageProps = {
+    addUser: (newUser: object) => Promise<void>;
+};
 
-    const navigate = useNavigate();
-    const onSubmitClick = () => {
+interface FormData {
+    name: string;
+    username: string;
+    email: string;
+    street: string;
+    suite: string;
+    city: string;
+    zipcode: string;
+    phone: string;
+    website: string;
+    company: string;
+}
 
-        navigate('/');
+const CreateUserPage:React.FC<CreateUserPageProps> = ({addUser}) => {
+
+    const initialValues = {
+        name: '',
+        username: '',
+        email: '',
+        street: '',
+        suite: '',
+        city: '',
+        zipcode: '',
+        phone: '',
+        website: '',
+        company: '',
     };
 
+    const navigate = useNavigate();
+    const [ formData, setFormData ] = useState<FormData>(initialValues);
+
+    const handleChange = (fieldName: keyof FormData, newValue: string) => {
+      setFormData((prevState) => ({
+        ...prevState,
+        [fieldName]: newValue
+      }))
+    }
+
+    const onSubmitClick = (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      
+    const newUser = {
+        name : formData.name,
+        username : formData.username,
+        email: formData.email,
+        address: {
+            street: formData.street,
+            suite: formData.suite,
+            city: formData.city,
+            zipcode: formData.zipcode
+        },
+        phone: formData.phone,
+        website: formData.website,
+        company: {
+            name: formData.company
+        }
+      }
+
+      console.log(newUser);
+
+      addUser(newUser);
+      navigate('/');
+
+    }
+
     return (
-        <form>
+        <form onSubmit={onSubmitClick}>
             <div className="user-box">
                 <div className="user-container">
 
@@ -19,12 +81,16 @@ const CreateUserPage = () => {
                         type="text"
                         name="name"
                         placeholder="Enter your name"
+                        value={formData.name}
+                        onChange={e => handleChange('name', e.target.value)}
                         className="title-name"
                     />
                     <input 
                         type="text"
                         name="username"
                         placeholder="#username"
+                        value={formData.username}
+                        onChange={e => handleChange('username', e.target.value)}
                         className="username"
                     />
                     <hr className="line" />
@@ -36,6 +102,8 @@ const CreateUserPage = () => {
                             type="text" 
                             id="email" 
                             name="email" 
+                            value={formData.email}
+                            onChange={e => handleChange('email', e.target.value)}
                             className="email"
                             placeholder="abc@email.com"
                             required
@@ -53,6 +121,8 @@ const CreateUserPage = () => {
                                     id="street" 
                                     name="street" 
                                     placeholder="9th st"
+                                    value={formData.street}
+                                    onChange={e => handleChange('street', e.target.value)}
                                     className="value"
                                 />
                             </div>
@@ -63,6 +133,8 @@ const CreateUserPage = () => {
                                     id="suite" 
                                     name="suite" 
                                     placeholder="ab-mall"
+                                    value={formData.suite}
+                                    onChange={e => handleChange('suite', e.target.value)}
                                     className="value"
                                 />
                             </div>
@@ -73,6 +145,8 @@ const CreateUserPage = () => {
                                     id="city"
                                     name="city"
                                     placeholder="new delhi"
+                                    value={formData.city}
+                                    onChange={e => handleChange('city', e.target.value)}
                                     className="value"
                                 />
                             </div>
@@ -83,6 +157,8 @@ const CreateUserPage = () => {
                                     id="zipcode"
                                     name="zipcode"
                                     placeholder="11893"
+                                    value={formData.zipcode}
+                                    onChange={e => handleChange('zipcode', e.target.value)}
                                     className="value"
                                 />
                             </div>
@@ -98,6 +174,8 @@ const CreateUserPage = () => {
                                 id="phone"
                                 name="phone"
                                 placeholder="1234567890"
+                                value={formData.phone}
+                                onChange={e => handleChange('phone', e.target.value)}
                                 className="contact-value"
                             />
                         </div>
@@ -112,6 +190,8 @@ const CreateUserPage = () => {
                                 id="website"
                                 name="website"
                                 placeholder="website.com"
+                                value={formData.website}
+                                onChange={e => handleChange('website', e.target.value)}
                                 className="contact-value"
                             />
                         </div>
@@ -126,6 +206,8 @@ const CreateUserPage = () => {
                                 id="company"
                                 name="company"
                                 placeholder="microsoft"
+                                value={formData.company}
+                                onChange={e => handleChange('company', e.target.value)}
                                 className="contact-value"
                             />
                         </div>
@@ -133,7 +215,7 @@ const CreateUserPage = () => {
 
                     {/* Submit button */}
                     <div className="buttons-container">
-                        <button onClick={ () => onSubmitClick() }>
+                        <button type="submit">
                             Submit
                         </button>
                     </div>
