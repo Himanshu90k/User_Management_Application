@@ -233,7 +233,20 @@ p {
   margin-bottom: 0;
 }
 
-p.username {
+/* style for the form input */
+input.title-name {
+  width: auto;
+  height: auto;
+  text-align: center;
+  background-color: #FB3567;
+  margin-top: 1.25rem;
+}
+
+input.title-name::placeholder {
+  color: #FFF;
+}
+
+.user-container .username {
   color: #FFF;
   font-size: 1rem;
   font-weight: 500;
@@ -241,6 +254,19 @@ p.username {
   width: auto;
   margin: 0;
 }
+
+/* style for the form input */
+.user-container input.username {
+  height: auto;
+  text-align: center;
+  background-color: #FB3567;
+  margin-top: 0.25rem;
+}
+
+.user-container input.username::placeholder {
+  color: #FFF;
+}
+
 
 .line {
   background: #FFF;
@@ -257,14 +283,14 @@ p.username {
   align-items: center;
 }
 
-h2.email-label {
+.email-container .email-label {
   color: #FF3485;
   font-size: 1rem;
   font-weight: 600;
   margin: 0rem 1rem;
 }
 
-p.email {
+.email-container .email {
   color: #FF3485;
   font-size: 1rem;
   font-weight: 400;
@@ -297,7 +323,7 @@ p.email {
   width: 100%;
 }
 
-.address-boxes h3 {
+.address-boxes .label {
   color: #FF3485;
   font-size: 1rem;
   font-weight: 500;
@@ -305,7 +331,7 @@ p.email {
   width: 6.5rem;
 }
 
-.address-boxes p {
+.address-boxes .value {
   color: #FF3485;
   font-size: 1rem;
   font-weight: 400;
@@ -317,6 +343,7 @@ p.email {
   display: flex;
   gap: 0.625rem;
   margin-left: 1rem;
+  width: 90%;
 }
 
 .contacts-container {
@@ -334,9 +361,10 @@ p.email {
   margin-left: 1rem;
   width: 100%;
   align-items: center;
+  height: 100%;
 }
 
-.contact h3 {
+.contact .contact-label {
   color: #FF3485;
   font-size: 1rem;
   font-weight: 600;
@@ -344,12 +372,19 @@ p.email {
   width: 5rem;
 }
 
-.contact p {
+.contact .contact-value {
   color: #FF3485;
   font-size: 1rem;
   font-weight: 400;
   opacity: 0.8;
-  width: auto;
+  width: 70%;
+}
+
+/* reduce the input box width for smaller screens */
+@media (max-width: 658px) {
+  .contact .contact-value {
+    width: 50%;
+  }
 }
 
 .buttons-container {
@@ -379,12 +414,14 @@ p.email {
   margin-bottom: 4rem;
 }
 
+/* reduce the width of the containers and componenets for smaller screens */
 @media (max-width: 658px) {
   .email-container, .address-container, .contacts-container, .end-line, .line {
     width: 20rem;
   }
 }
 
+/* reduce the font size of the inputs for smaller screens */
 @media (max-width: 658px) {
   p.email, .address-boxes p, .contact p {
     font-size: 0.75rem;
@@ -401,4 +438,15 @@ p.email {
   .user-container {
     width: 25rem;
   }
+}
+
+/* style the input fields */
+input {
+  width: 100%;
+  height: 70%;
+  border: none;
+}
+
+.address-boxes .address input {
+  border: none;
 }

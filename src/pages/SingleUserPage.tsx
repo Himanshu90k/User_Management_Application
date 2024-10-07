@@ -70,20 +70,20 @@ const SingleUserPage: React.FC<SingleUserPageProps> = ( { deleteUser }) => {
                         <h2>Address</h2>
                         <div className="address-boxes">
                             <div className="address">
-                                <h3>street:</h3>
-                                <p>{user.address.street}</p>
+                                <h3 className="label">street:</h3>
+                                <p className="value">{user.address.street}</p>
                             </div>
                             <div className="address">
-                                <h3>suite:</h3>
-                                <p>{user.address.suite}</p>
+                                <h3 className="label">suite:</h3>
+                                <p className="value">{user.address.suite}</p>
                             </div>
                             <div className="address">
-                                <h3>city:</h3>
-                                <p>{user.address.city}</p>
+                                <h3 className="label">city:</h3>
+                                <p className="value">{user.address.city}</p>
                             </div>
                             <div className="address">
-                                <h3>zipcode:</h3>
-                                <p>{user.address.zipcode}</p>
+                                <h3 className="label">zipcode:</h3>
+                                <p className="value">{user.address.zipcode}</p>
                             </div>
                         </div>
                     </div>
@@ -91,24 +91,24 @@ const SingleUserPage: React.FC<SingleUserPageProps> = ( { deleteUser }) => {
                     {/* Phone no */}
                     <div className="contacts-container">
                         <div className="contact">
-                            <h3>Phone no:</h3>
-                            <p>{user.phone}</p>
+                            <h3 className="contact-label">Phone no:</h3>
+                            <p className="contact-value">{user.phone}</p>
                         </div>
                     </div>
 
                     {/* Website */}
                     <div className="contacts-container">
                         <div className="contact">
-                            <h3>Website:</h3>
-                            <p>{user.website}</p>
+                            <h3 className="contact-label">Website:</h3>
+                            <p className="contact-value">{user.website}</p>
                         </div>
                     </div>
 
                     {/* Company */}
                     <div className="contacts-container">
                         <div className="contact">
-                            <h3>Company:</h3>
-                            <p>{user.company.name}</p>
+                            <h3 className="contact-label">Company:</h3>
+                            <p className="contact-value">{user.company.name}</p>
                         </div>
                     </div>
 
