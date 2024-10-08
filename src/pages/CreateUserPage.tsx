@@ -113,6 +113,8 @@ const CreateUserPage:React.FC<CreateUserPageProps> = ({users, addUser}) => {
                         type="text"
                         name="name"
                         placeholder="Enter your name"
+                        required
+                        minLength={3}
                         value={formData.name}
                         onChange={e => handleChange('name', e.target.value)}
                         className="title-name"
@@ -121,6 +123,8 @@ const CreateUserPage:React.FC<CreateUserPageProps> = ({users, addUser}) => {
                         type="text"
                         name="username"
                         placeholder="#username"
+                        required
+                        minLength={3}
                         value={formData.username}
                         onChange={e => handleChange('username', e.target.value)}
                         className="username"
@@ -153,6 +157,7 @@ const CreateUserPage:React.FC<CreateUserPageProps> = ({users, addUser}) => {
                                     id="street" 
                                     name="street" 
                                     placeholder="9th st"
+                                    required
                                     value={formData.street}
                                     onChange={e => handleChange('street', e.target.value)}
                                     className="value"
@@ -177,6 +182,7 @@ const CreateUserPage:React.FC<CreateUserPageProps> = ({users, addUser}) => {
                                     id="city"
                                     name="city"
                                     placeholder="new delhi"
+                                    required
                                     value={formData.city}
                                     onChange={e => handleChange('city', e.target.value)}
                                     className="value"
@@ -206,6 +212,8 @@ const CreateUserPage:React.FC<CreateUserPageProps> = ({users, addUser}) => {
                                 id="phone"
                                 name="phone"
                                 placeholder="1234567890"
+                                required
+                                pattern="\d{10}"
                                 value={formData.phone}
                                 onChange={e => handleChange('phone', e.target.value)}
                                 className="contact-value"
@@ -218,10 +226,11 @@ const CreateUserPage:React.FC<CreateUserPageProps> = ({users, addUser}) => {
                         <div className="contact">
                             <label htmlFor="website" className="contact-label">Website:</label>
                             <input 
-                                type="text"
+                                type="url"
                                 id="website"
                                 name="website"
                                 placeholder="website.com"
+                                required
                                 value={formData.website}
                                 onChange={e => handleChange('website', e.target.value)}
                                 className="contact-value"
@@ -238,6 +247,7 @@ const CreateUserPage:React.FC<CreateUserPageProps> = ({users, addUser}) => {
                                 id="company"
                                 name="company"
                                 placeholder="microsoft"
+                                required
                                 value={formData.company}
                                 onChange={e => handleChange('company', e.target.value)}
                                 className="contact-value"
