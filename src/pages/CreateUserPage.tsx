@@ -1,9 +1,34 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
+// Define the user type send to the jsonPlaceholder api
+interface UserType {
+    id: number;
+    name: string;
+    username: string;
+    email: string;
+    address: {
+        street: string;
+        suite: string;
+        city: string;
+        zipcode: string;
+        geo: {
+            lat: string;
+            lng: string;
+        };
+    };
+    phone: string;
+    website: string;
+    company: {
+        name: string;
+        catchPhrase: string;
+        bs: string;
+    };
+}
 
 type CreateUserPageProps = {
-    addUser: (newUser: object) => Promise<void>;
+    users: UserType[];
+    addUser: (newUser: UserType) => Promise<void>;
 };
 
 interface FormData {
@@ -19,7 +44,7 @@ interface FormData {
     company: string;
 }
 
-const CreateUserPage:React.FC<CreateUserPageProps> = ({addUser}) => {
+const CreateUserPage:React.FC<CreateUserPageProps> = ({users, addUser}) => {
 
     const initialValues = {
         name: '',
@@ -48,6 +73,7 @@ const CreateUserPage:React.FC<CreateUserPageProps> = ({addUser}) => {
       e.preventDefault();
       
     const newUser = {
+        id: users.length+1,
         name : formData.name,
         username : formData.username,
         email: formData.email,
@@ -55,12 +81,18 @@ const CreateUserPage:React.FC<CreateUserPageProps> = ({addUser}) => {
             street: formData.street,
             suite: formData.suite,
             city: formData.city,
-            zipcode: formData.zipcode
+            zipcode: formData.zipcode,
+            geo: {
+                lat: "",
+                lng: "",
+            },
         },
         phone: formData.phone,
         website: formData.website,
         company: {
-            name: formData.company
+            name: formData.company,
+            catchPhrase: "",
+            bs: "",
         }
       }
 

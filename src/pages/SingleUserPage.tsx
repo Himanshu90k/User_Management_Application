@@ -1,42 +1,53 @@
-import { useLoaderData, useNavigate, LoaderFunction } from 'react-router-dom';
-
-type SingleUserPageProps = {
-    deleteUser: (id: string) => Promise<void>;
-};
-
-// Define the type for address data
-type Address = {
-    street: string;
-    suite: string;
-    city: string;
-    zipcode: string;
-};
-
-// Define the type for company data
-type Company = {
-    name: string;
-    catchPhrase: string;
-    bs: string;
-};
+import {useNavigate, useParams} from 'react-router-dom';
 
 // Define the type for user data
-type User = {
-    id: string;
+interface UserType {
+    id: number;
     name: string;
     username: string;
     email: string;
-    address: Address;
+    address: {
+        street: string;
+        suite: string;
+        city: string;
+        zipcode: string;
+        geo: {
+            lat: string;
+            lng: string;
+        };
+    };
     phone: string;
     website: string;
-    company: Company;
+    company: {
+        name: string;
+        catchPhrase: string;
+        bs: string;
+    };
+}
+
+type SingleUserPageProps = {
+    users: UserType[];
+    deleteUser: (id: number) => Promise<void>;
 };
 
-const SingleUserPage: React.FC<SingleUserPageProps> = ( { deleteUser }) => {
+const SingleUserPage: React.FC<SingleUserPageProps> = ( { users, deleteUser }) => {
 
-    const user = useLoaderData() as User;
-    const navigate = useNavigate();
+    // filter data for the single user page
+    const { id } = useParams<{ id: string }>();
+    let userId: number;
+        if (id !== undefined) {
+          userId = parseInt(id, 10);
+        }
+    const user = users.find(user => user.id === userId);
 
-    const onDeleteClick = (userId: string) => {
+    if (!user) {
+        return <h1>User not found</h1>; // Handle the case where user is undefined
+    }
+    
+    //initialize the useNavigate()
+    const navigate = useNavigate(); 
+
+    const onDeleteClick = (userId: number) => {
         const confirm = window.confirm("Are you sure you want to delete this listing?")
 
         if(!confirm) return;
@@ -45,8 +56,8 @@ const SingleUserPage: React.FC<SingleUserPageProps> = ( { deleteUser }) => {
         navigate('/');
     };
 
-    const onUpdateClick = () => {
-        navigate('/update-user')
+    const onUpdateClick = (userId: number) => {
+        navigate(`/update-user/${userId}`)
     };
 
     return (
@@ -114,7 +125,7 @@ const SingleUserPage: React.FC<SingleUserPageProps> = ( { deleteUser }) => {
 
                     {/* Update - Delete button */}
                     <div className="buttons-container">
-                        <button onClick={ () => onUpdateClick() }>
+                        <button onClick={ () => onUpdateClick(user.id) }>
                             Update
                         </button>
                         <button onClick={ () => onDeleteClick(user.id) }>
@@ -130,10 +141,4 @@ const SingleUserPage: React.FC<SingleUserPageProps> = ( { deleteUser }) => {
     )
 };
 
-const userLoader: LoaderFunction = async ({ params }) => {
-    const res = await fetch(`https://jsonplaceholder.typicode.com/users/${params.id}`);
-    const data = await res.json();
-    return data;
-}
-
-export {SingleUserPage as default, userLoader };
+export default SingleUserPage;
