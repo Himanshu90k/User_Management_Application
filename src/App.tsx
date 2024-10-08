@@ -4,6 +4,7 @@ import SingleUserPage from './pages/SingleUserPage';
 import CreateUserPage from './pages/CreateUserPage';
 import UpdateUserPage from './pages/UpdateUserPage';
 import ContactPage from './pages/ContactPage';
+import NotFoundPage from './pages/NotFoundPage';
 import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
@@ -126,6 +127,7 @@ const App: React.FC = () => {
         <Route path='/create-user' element={ <CreateUserPage users={users} addUser={addUser} /> } />
         <Route path='/update-user/:id' element={ <UpdateUserPage users={users} updateUser={updateUser} /> } />
         <Route path='/contact' element={ <ContactPage /> } />
+        <Route path='*' element={<NotFoundPage />} />
       </Route>
     )
   );

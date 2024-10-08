@@ -23,7 +23,7 @@ const Navbar = () => {
                         <NavLink className="nav-links-items" to='/create-user'>
                             AddUser
                         </NavLink>
-                        <NavLink className="nav-links-items" to='https://wa.me/+919968453518?text=I%27m%20interested%20in%20connecting%20with%20you'>
+                        <NavLink className="nav-links-items" target='_blank' to='https://wa.me/+919968453518?text=I%27m%20interested%20in%20connecting%20with%20you'>
                             Contact
                         </NavLink>
                     </div>

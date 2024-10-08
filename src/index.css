@@ -7,6 +7,7 @@ body {
   width: 100vw;
 }
 
+/* navigation bar styles */
 nav {
   display: flex;
   background-color: #8D5FC9;
@@ -93,6 +94,7 @@ nav {
   }
 }
 
+/* users page styles */
 .title-box {
   display: flex;
   align-items: center;
@@ -137,6 +139,7 @@ nav {
   }
 }
 
+/* table ui styles */
 .table-box {
   display: flex;
   align-items: center;
@@ -207,6 +210,7 @@ p {
   background: #8D5FC9;
 }
 
+/* user page styles */
 .user-box {
   display: flex;
   justify-content: center;
@@ -449,4 +453,44 @@ input {
 
 .address-boxes .address input {
   border: none;
+}
+
+/* error page styles */
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.not-found .error {
+  color: #000;
+  font-size: 6rem;
+  font-weight: 700;
+  margin: 0;
+  margin-top: 10vh;
+}
+
+.not-found .error-message {
+  color: #000;
+  font-size: 3rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.not-found .home {
+  color: #000;
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.not-found .home:hover {
+  color: #8D5FC9;
+}
+
+@media (max-width: 658px) {
+  .not-found .error-message {
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
 }
